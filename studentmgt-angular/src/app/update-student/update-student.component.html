@@ -1,0 +1,53 @@
+<form #form=ngForm (ngSubmit)="form.valid && updateStudent(form)">
+
+    <div class="form-group">
+        <strong>Student Id:</strong>
+        <input type="text" name="id" required placeholder="enter Student Id" ngModel #idCtrl=ngModel class="form-control">
+    </div>
+    <div *ngIf="idCtrl.errors!==null &&  idCtrl.errors.required"  class="error">
+        required fields
+    </div>
+  
+    <div class="form-group">
+        <strong>Student Name</strong>
+        <input type="text" name="name" required minlength="2" placeholder="enter name here" ngModel
+            #nameCtrl=ngModel class="form-control">
+    </div>
+    <div *ngIf="nameCtrl.errors!==null && nameCtrl.errors.required" class="error">
+      name required
+    </div>
+    <div *ngIf="nameCtrl.errors!=null && nameCtrl.errors.minlength" class="error">
+        minlength is 2
+    </div>
+  
+  
+    <div class="form-group">
+        <strong>Age</strong>
+        <input type="number" name="age" required placeholder="enter age" ngModel #ageCtrl=ngModel
+          class="form-control">
+    </div>
+    <div *ngIf="ageCtrl.errors!=null &&  ageCtrl.errors.required" class="error"> Age required </div> 
+  
+    <div class="form-group">
+        <strong> Address</strong>
+        <input type="text" name="address" required placeholder="enter address" ngModel #addressCtrl=ngModel class="form-control">
+    </div>
+    <div *ngIf="addressCtrl.errors!==null &&  addressCtrl.errors.required" class="error">
+        Address required
+    </div>
+
+
+    <div class="form-group">
+        <strong>Phone Number:</strong>
+        <input type="text" name="phoneNumber" required maxlength="10"   placeholder="enter phone number" ngModel #phoneNumberCtrl=ngModel
+              class="form-control">
+    </div>
+      <div *ngIf="phoneNumberCtrl.errors!==null &&  phoneNumberCtrl.errors.required" class="error">
+         phone number is required
+      </div>
+      <div *ngIf="phoneNumberCtrl.errors!==null && phoneNumberCtrl.errors.maxlength "  class="error">
+          length is 10
+      </div>
+  
+    <input type="submit" value="Submit" class="btn btn-primary">
+  </form>

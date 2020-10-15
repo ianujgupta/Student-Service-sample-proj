@@ -1,0 +1,54 @@
+<form #form=ngForm (ngSubmit)="form.valid && addStudent(form)">
+
+  <div class="form-group">
+    <strong>Student Name</strong>
+    <input type="text" name="name" required minlength="2" placeholder="enter name here" ngModel
+                #nameCtrl=ngModel class="form-control">
+  </div>
+  <div *ngIf="nameCtrl.errors!==null &&  nameCtrl.errors.required" class="error">
+          name required
+  </div>
+  <div *ngIf="nameCtrl.errors!==null && nameCtrl.errors.minlength" class="error">
+            minlength is 2
+  </div>
+  
+  <div class="form-group">
+    <strong>Student Age</strong>
+    <input type="number" name="age" required placeholder="enter age" ngModel #ageCtrl=ngModel
+          class="form-control">
+  </div>
+  <div *ngIf="ageCtrl.errors!==null &&  ageCtrl.errors.required" class="error">enter age </div> 
+  
+  <div class="form-group">
+    <strong>Student Address</strong>
+    <input type="text" name="address" minlength="5" required placeholder="enter address" ngModel #addressCtrl=ngModel
+            class="form-control">
+  </div>
+  <div *ngIf="addressCtrl.errors!==null &&  addressCtrl.errors.required" class="error">
+        address required
+  </div>
+  <div *ngIf="addressCtrl.errors!==null && addressCtrl.errors.minlength" class="error">
+        minlength is 5
+  </div> 
+  
+  <div class="form-group">
+      <strong>Phone Number:</strong>
+      <input type="text" name="phoneNumber" maxlength="10"  required placeholder="enter phone number" ngModel #phoneNumberCtrl=ngModel
+            class="form-control">
+  </div>
+    <div *ngIf="phoneNumberCtrl.errors!==null &&  phoneNumberCtrl.errors.required" class="error">
+       phone number is required
+    </div>
+    <div *ngIf="phoneNumberCtrl.errors!==null && phoneNumberCtrl.errors.maxlength " disabled class="error">
+        length is 10
+    </div>
+  
+    <input type="submit" value="Submit" class="btn btn-primary"> &nbsp;
+    <input type="reset" value="reset" class="btn btn-info">
+  
+  </form>
+  <br>
+  
+  <div *ngIf="student!==undefined" class="alert alert-success">
+    <strong>Add Successfully!</strong>
+  </div>
